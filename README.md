@@ -1,4 +1,4 @@
-# ScoopTodoApp
+# ScootTodoApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.3.
 This project uses Bootstrap 5 for UI Components.
