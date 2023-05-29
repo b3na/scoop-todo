@@ -3,8 +3,26 @@
     {
       "id": 1,
       "description": "Ace Angular Interview",
-      "dueDate": "May 29,2023",
-      "priority": 3
+      "dueDate": "2023-05-29T18:00:00.000Z",
+      "priority": "1"
+    },
+    {
+      "priority": "2",
+      "description": "Repair Macbook",
+      "dueDate": "2023-05-31T18:00:00.000Z",
+      "id": 6
+    },
+    {
+      "priority": "2",
+      "description": "Buy Milk",
+      "dueDate": "2023-05-31T18:00:00.000Z",
+      "id": 7
+    },
+    {
+      "priority": "2",
+      "description": "Go to Store",
+      "dueDate": "2023-05-31T18:00:00.000Z",
+      "id": 8
     }
   ]
 }

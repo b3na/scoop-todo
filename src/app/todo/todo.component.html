@@ -1,0 +1,127 @@
+<section class="vh-100" style="background-color: #eee">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-lg-9 col-xl-7">
+        <div class="card rounded-3">
+          <div class="card-body p-4">
+            <h4 class="text-center my-3 pb-3">To Do App</h4>
+            <form
+              #addTodoForm
+              (ngSubmit)="onSubmit(newTodo)"
+              class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2"
+            >
+              <div class="col-auto">
+                <div class="form-outline">
+                  <div class="small">Description:</div>
+                  <input
+                    type="text"
+                    name="description"
+                    [(ngModel)]="newTodo.description"
+                    placeholder="Description"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+
+              <div class="col-auto">
+                <div class="small">Priority</div>
+
+                <select
+                  class="form-select"
+                  aria-label="Priority"
+                  name="priorioty"
+                  [(ngModel)]="newTodo.priority"
+                >
+                  <option value="1">High</option>
+                  <option value="2">Low</option>
+                </select>
+              </div>
+
+              <div class="col-auto">
+                <div class="small">Date:</div>
+
+                <div class="input-group">
+                  <input
+                    class="form-control"
+                    placeholder="Due Date"
+                    name="dueDate"
+                    [(ngModel)]="newTodo.dueDate"
+                    ngbDatepicker
+                    #d="ngbDatepicker"
+                  />
+                  <button
+                    class="btn btn-outline-secondary bi bi-calendar3"
+                    (click)="d.toggle()"
+                    type="button"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+
+              <div class="col-auto">
+                <div class="small">Add</div>
+
+                <button type="submit" class="btn btn-primary">Add</button>
+              </div>
+            </form>
+
+            <div class="row">
+              <div class="col-6">
+                <div class="small">Search</div>
+                <div class="input-group">
+                  <input
+                    class="form-control"
+                    type="search"
+                    [(ngModel)]="filterInput"
+                    id="example-search-input"
+                  />
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="small">Filter by priority</div>
+                <select
+                  class="form-select"
+                  aria-label="Priority"
+                  (input)="onPriorityFilter($event)"
+                >
+                  <option selected value="0">All</option>
+                  <option value="1">High</option>
+                  <option value="2">Low</option>
+                </select>
+              </div>
+            </div>
+
+            <table class="table mb-4">
+              <thead>
+                <tr>
+                  <th scope="col">Description</th>
+                  <th scope="col">Due Date</th>
+                  <th scope="col">Priority</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="let todo of filteredTodos | todoFilter : filterInput"
+                >
+                  <td>{{ todo.description }}</td>
+                  <td>{{ todo.dueDate | date }}</td>
+                  <td>
+                    <span
+                      [ngClass]="
+                        todo.priority == '1'
+                          ? 'badge bg-success'
+                          : 'badge bg-warning'
+                      "
+                      >{{ todo.priority == "1" ? "High" : "Low" }}</span
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
